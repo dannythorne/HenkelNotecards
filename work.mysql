@@ -1,0 +1,16 @@
+
+use HenkelNotecards;
+
+drop table if exists Work;
+create table Work(
+  id int auto_increment primary key,
+  Name text,
+  Abbr text,
+  Year int,
+  isBC bool
+);
+
+insert into Work values(0, "Aeneid", "An", 24, true);
+
+show tables;
+select * from Work;
