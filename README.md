@@ -1,4 +1,5 @@
 Henkel's Notecards
 
-Dev branch...
+Hehfay's dev branch.
 
+Thorne's class.
