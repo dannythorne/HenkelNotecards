@@ -4,8 +4,8 @@ use HenkelNotecards;
 drop table if exists Work;
 create table Work(
   id int auto_increment primary key,
-  Name text,
-  Abbr text,
+  Name varchar(64),
+  Abbr varchar(64), 
   Year int,
   isBC bool
 );
