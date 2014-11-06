@@ -1,0 +1,11 @@
+use HenkelNotecards;
+
+# Create the Keyword and KeywordNotecard tables.
+
+drop table if exists Keyword;
+create table
+Keyword( id int NOT NULL AUTO_INCREMENT, Comment char(100), PRIMARY KEY id);
+
+drop table if exists KeywordNotecard;
+create table
+KeywordNotecard( KeywordId int, NotecardId int);
