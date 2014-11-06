@@ -5,12 +5,11 @@ drop table if exists Work;
 create table Work(
   id int auto_increment primary key,
   Name varchar(64),
-  Abbr varchar(64), 
-  Year int,
-  isBC bool
+  Abbr varchar(64),
+  Year int
 );
 
-insert into Work values(0, "Aeneid", "An", 24, true);
+insert into Work values(0, "Aeneid", "An", -24);
 
 show tables;
 select * from Work;
