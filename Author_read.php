@@ -9,9 +9,6 @@
 
 <?PHP
 	require_once("global_vars.php");
-?>
-
-<?PHP
 
 	$mysqli = new mysqli($host, $username, $password, $database);
 
