@@ -4,7 +4,7 @@ use HenkelNotecards;
 
 drop table if exists Keyword;
 create table
-Keyword( id int NOT NULL AUTO_INCREMENT, Comment char(100), PRIMARY KEY id);
+Keyword( id int AUTO_INCREMENT PRIMARY KEY, Comment char(100));
 
 drop table if exists KeywordNotecard;
 create table
