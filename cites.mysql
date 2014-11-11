@@ -1,18 +1,22 @@
 
 use HenkelNotecards;
 
-# Create the References table.
-# Note that "references" is a reserved word in MySQL,
-# so an alternative like "Refs" is required.
+# Create the Cites table.
+#
+# NOTE: This was originally called References, but "references"
+# is a reserved word in MySQL, so an alternative is required.
+# We considered "Refs" but then decided on "Cites".
+#
 drop table if exists Refs;
+drop table if exists Cites;
 create table
-Refs( WorkId int
-    , NotecardId int
-    , coords varchar(32)
-    , primary key (WorkId, NotecardId) );
+Cites( WorkId int
+     , NotecardId int
+     , coords varchar(32)
+     , primary key (WorkId, NotecardId) );
 
-insert into Refs values( 1, 1, "X 1.1");
-insert into Refs values( 2, 3, "X 1.4");
-insert into Refs values( 4, 3, "X 1.5");
-insert into Refs values( 2, 5, "X 2.3");
+insert into Cites values( 1, 1, "X 1.1");
+insert into Cites values( 2, 3, "X 1.4");
+insert into Cites values( 4, 3, "X 1.5");
+insert into Cites values( 2, 5, "X 2.3");
 
