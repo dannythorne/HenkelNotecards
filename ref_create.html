@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add a Reference</title>
+</head>
+<body>
+<h1>Add a Reference</h1>
+
+<div id="create">
+</div>
+
+<script>
+var genCreateForm = function()
+{
+  var text;
+
+  var div = document.getElementById("create");
+  div.innerHTML = "Enter a Reference:";
+
+  var form = document.createElement("form");
+  div.appendChild(form);
+
+  var input = document.createElement("input");
+  input.type = "text";
+  input.name = "coords";
+  input.value = "X 0.0";
+  form.appendChild(input);
+
+}
+window.onload = function()
+{
+  genCreateForm();
+}
+</script>
+
+</body>
+</html>
