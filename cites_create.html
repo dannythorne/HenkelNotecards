@@ -9,11 +9,20 @@
 <div id="create">
 </div>
 
+<div id="console">
+</div>
+
 <script>
+var handleCreateForm = function(evt)
+{
+  evt.preventDefault(); // prevent page reload from default submit action
+
+  var x = document.getElementById("console");
+  x.innerHTML = "submitted coords '" + document.createform.coords.value + "'";
+}
+
 var genCreateForm = function()
 {
-  var text;
-
   var div = document.getElementById("create");
   div.innerHTML = "Enter a Reference:";
 
@@ -26,7 +35,14 @@ var genCreateForm = function()
   input.value = "X 0.0";
   form.appendChild(input);
 
+  input = document.createElement("input");
+  input.type = "submit";
+  form.appendChild(input);
+
+  form.name = "createform";
+  form.onsubmit = handleCreateForm;
 }
+
 window.onload = function()
 {
   genCreateForm();
