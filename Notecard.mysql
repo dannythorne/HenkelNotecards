@@ -3,8 +3,8 @@ use HenkelNotecards;
 # Create the Note card table.
 drop table if exists Notecard;
 create table Notecard(
-	 Id int auto_increment primary key,
+	 id int auto_increment primary key,
 	   coords varchar(32),
-	   Comment char,
+	   Comment varchar,
 	   Position int,
 	   workId int);
