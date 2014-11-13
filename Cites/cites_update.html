@@ -2,14 +2,26 @@
 <html>
 <head>
 <title>Update a Reference</title>
+<style>
+#notecard_dropdown
+{
+  float:left;
+  margin-right:2em;
+}
+</style>
 </head>
 <body>
 <h1>Update a Reference</h1>
 
-<div id="select">
+<div id="notecard_dropdown">
+Notecard
 </div>
 
-<div id="update">
+<div id="work_dropdown">
+Work
+</div>
+
+<div id="edit">
 </div>
 
 <div id="console">
@@ -18,6 +30,43 @@
 <script>
 var genSelectForm = function()
 {
+  var req_notecards = new XMLHttpRequest();
+  var req_works = new XMLHttpRequest();
+
+  req_notecards.onreadystatechange = function()
+  {
+    if( req_notecards.readyState == 4
+     && req_notecards.status     == 200 )
+    {
+      var div = document.getElementById("notecard_dropdown");
+      var form = document.createElement("form");
+      var select = document.createElement("select");
+      select.innerHTML = req_notecards.responseText;
+      form.appendChild(select);
+      form.style.display = "inline";
+      div.appendChild(form);
+    }
+  }
+
+  req_works.onreadystatechange = function()
+  {
+    if( req_works.readyState == 4
+     && req_works.status     == 200 )
+    {
+      var div = document.getElementById("work_dropdown");
+      var form = document.createElement("form");
+      var select = document.createElement("select");
+      select.innerHTML = req_works.responseText;
+      form.appendChild(select);
+      form.style.display = "inline";
+      div.appendChild(form);
+    }
+  }
+
+  req_notecards.open("GET","notecards_read.php",true);
+  req_works.open("GET","works_read.php",true);
+  req_notecards.send();
+  req_works.send();
 }
 
 var genUpdateForm = function()
