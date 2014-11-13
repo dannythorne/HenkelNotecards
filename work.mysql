@@ -10,6 +10,9 @@ create table Work(
 );
 
 insert into Work values(0, "Aeneid", "An", -24);
+insert into Work values(0, "Sqaw", "Sq", 23);
+insert into Work values(0, "Dewetrty", "Dw", -125);
+insert into Work values(0, "Jeaty", "Jt", -2);
 
 show tables;
 select * from Work;
