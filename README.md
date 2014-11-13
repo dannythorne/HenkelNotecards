@@ -4,6 +4,7 @@ Dev branch...
 
 Naming conventions:
   * id (two letters, both lowercase)
+  * foreign keys: TableId
   * Entities/Attributes (first letter capitalized)
   * Entity names singular
   * tablename.mysql (script that creates a table)
