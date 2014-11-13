@@ -8,3 +8,14 @@ create table Notecard(
 	   Comment varchar,
 	   Position int,
 	   workId int);
+	   
+	   
+	   
+	   insert into Notecard values ( 22 , "This is the first comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the first comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the first comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the first comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the first comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the first comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the first comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the first comment", 22, 1 );
