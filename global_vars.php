@@ -1,8 +1,6 @@
-<?PHP
-
-	$username = "jhartma0";
-	$password = "jhartma0";
-	$database = "HenkelNotecards";
-	$host			= ""
-
+<?php
+$host = "";
+$username = "henkel";
+$password = "henkel";
+$database = "HenkelNotecards";
 ?>
