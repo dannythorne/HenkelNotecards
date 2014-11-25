@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Henkel's NoteCards | Refs Table</title>
+<title>Henkel's NoteCards | Cites Table</title>
 </head>
 <body>
 
 <h1>Henkel's NoteCards</h1>
-<h2>Refs Table</h2>
+<h2>Cites Table</h2>
 
 <?php
-require_once("global_vars.php");
+require_once("../global_vars.php");
 
 $mysqli = new mysqli($host,$username,$password,$database);
 
@@ -19,7 +19,7 @@ if( mysqli_connect_errno())
 }
 else
 {
-  $query = "select * from Refs;";
+  $query = "select * from Cites;";
   $result = $mysqli->query($query);
 
   if( $result)
