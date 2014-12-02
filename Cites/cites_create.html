@@ -6,45 +6,120 @@
 <body>
 <h1>Add a Reference</h1>
 
-<div id="create">
+<form id="createform">
+
+<div id="notecard">
+Notecard
 </div>
+
+<div id="work">
+Work
+</div>
+
+<div id="coords">
+Coords
+</div>
+</form>
 
 <div id="console">
 </div>
 
 <script>
-var handleCreateForm = function(evt)
+var submitForm = function(evt)
 {
   evt.preventDefault(); // prevent page reload from default submit action
 
   var x = document.getElementById("console");
-  x.innerHTML = "submitted coords '" + document.createform.coords.value + "'";
+  x.innerHTML = "";
+  x.innerHTML+= document.createform.notecard_select.value;
+  x.innerHTML+= " cites ";
+  x.innerHTML+= document.createform.work_select.value;
+  x.innerHTML+= " at '" + document.createform.coords.value + "'";
+
+  var args;
+  args = "";
+  args+= "notecardId=" + document.createform.notecard_select.value;
+  args+= "&";
+  args+= "workId=" + document.createform.work_select.value;
+  args+="&";
+  args+="coords='"+document.createform.coords.value+"'";
+
+  x.innerHTML+="[ "+args+" ]";
+
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function()
+  {
+    if( req.readyState == 4 && req.status == 200)
+    {
+      x.innerHTML+="[ "+req.responseText+" ]";
+    }
+  }
+  req.open("POST", "cites_create.php", true);
+  req.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+  req.send(args);
+
+}
+
+var genSelectForm = function()
+{
+  var req_notecards = new XMLHttpRequest();
+  var req_works = new XMLHttpRequest();
+
+  req_notecards.onreadystatechange = function()
+  {
+    if( req_notecards.readyState == 4
+     && req_notecards.status     == 200 )
+    {
+      var div = document.getElementById("notecard");
+      var select = document.createElement("select");
+      select.name = "notecard_select";
+      select.innerHTML = req_notecards.responseText;
+      div.appendChild(select);
+    }
+  }
+
+  req_works.onreadystatechange = function()
+  {
+    if( req_works.readyState == 4
+     && req_works.status     == 200 )
+    {
+      var div = document.getElementById("work");
+      var select = document.createElement("select");
+      select.name = "work_select";
+      select.innerHTML = req_works.responseText;
+      div.appendChild(select);
+    }
+  }
+
+  req_notecards.open("GET","notecards_read.php",true);
+  req_works.open("GET","works_read.php",true);
+  req_notecards.send();
+  req_works.send();
 }
 
 var genCreateForm = function()
 {
-  var div = document.getElementById("create");
+  var div = document.getElementById("coords");
   div.innerHTML = "Enter a Reference:";
-
-  var form = document.createElement("form");
-  div.appendChild(form);
 
   var input = document.createElement("input");
   input.type = "text";
   input.name = "coords";
   input.value = "X 0.0";
-  form.appendChild(input);
+  div.appendChild(input);
 
   input = document.createElement("input");
   input.type = "submit";
-  form.appendChild(input);
+  div.appendChild(input);
 
+  var form = document.getElementById("createform");
   form.name = "createform";
-  form.onsubmit = handleCreateForm;
+  form.onsubmit = submitForm;
 }
 
 window.onload = function()
 {
+  genSelectForm();
   genCreateForm();
 }
 </script>
