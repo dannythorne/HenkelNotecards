@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Henkel's NoteCards | Cites Table</title>
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
+<title>Cites Table</title>
 </head>
 <body>
 
+<p id="nav">
+<span class="navitem"><a href="../index.html">Index</a></span>
+|
+<span class="navitem"><a href="./index.html">Cites</a></span>
+</p>
+
 <h1>Henkel's NoteCards</h1>
 <h2>Cites Table</h2>
+<h3>Read</h3>
 
 <?php
 require_once("../global_vars.php");
