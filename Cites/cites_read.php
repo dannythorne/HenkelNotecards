@@ -12,7 +12,7 @@
 <span class="navitem"><a href="./index.html">Cites</a></span>
 </p>
 
-<h1>Henkel's NoteCards</h1>
+<h1>Henkel's Notecards</h1>
 <h2>Cites Table</h2>
 <h3>Read</h3>
 
