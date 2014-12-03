@@ -1,4 +1,9 @@
 
+a
+{
+  text-decoration:none;
+}
+
 #nav
 {
   color:#606060;
@@ -7,3 +12,4 @@
 .navitem
 {
 }
+
