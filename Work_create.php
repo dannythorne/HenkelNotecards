@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
 <title>Add a Row to the Work Table</title>
 <style>
 
