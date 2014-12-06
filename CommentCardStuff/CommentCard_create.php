@@ -24,9 +24,9 @@
   else
   {
     $query = "insert into CommentCard values( 0,";
-    $query = $query."'".$comment;
+    $query = $query."'".$comment."');";
 
-    $result = $mysqli->query( query );
+    $result = $mysqli->query( $query );
 
     if( $result )
     {

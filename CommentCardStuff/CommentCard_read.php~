@@ -14,62 +14,65 @@ $database ="HenkelNotecards";
 $mysqli = new mysqli( $host, $username, $password, $database);
 if( mysqli_connect_errno() )
 {
-  echo "Error connecting to database 'HenkelNotecards'";
+  echo "<div>";
+  echo "ERROR: ".mysqli_connect_errno();
+  echo "</div>";
 }
 else
 {
   echo "DEBUG: Successful connection to the database.";
-}
 
-$query = "Select * from CommentCard;";
-$result = mysqli->query( query );
 
-if( $result )
-{
-  echo "Successful Query!";
-  $numrows = $result->num_rows;
-  $numcols = $result->field_count;
-  $fields  = $result->fetch_fields(); // returns an array
+  $query = "Select * from CommentCard;";
+  $result = $mysqli->query( $query );
 
-  echo "<div>";
-  echo "numrows ".$numrows;
-  echo "</div>";
-
-  echo "<div>";
-  echo "numcols ".$numcols;
-  echo "</div>";
-
-  echo "<tr>";
-  for( $i = 0; $i < $numcols; $i++)
+  if( $result )
   {
-    echo "<th>";
-    echo $fields[$i]->name;
-    echo "</th>";
-  }
-  echo "</th>";
+    echo "Successful Query!";
+    $numrows = $result->num_rows;
+    $numcols = $result->field_count;
+    $fields  = $result->fetch_fields(); // returns an array
 
-  while( $row = $result->fetch_row() )
-  {
-    echo "<th>";
+    echo "<div>";
+    echo "numrows ".$numrows;
+    echo "</div>";
 
+    echo "<div>";
+    echo "numcols ".$numcols;
+    echo "</div>";
+
+    echo "<tr>";
     for( $i = 0; $i < $numcols; $i++)
     {
-      echo "<td>";
-      echo $row[$i];
-      echo "</td>";
+      echo "<th>";
+      echo $fields[$i]->name;
+      echo "</th>";
     }
     echo "</tr>";
+
+    while( $row = $result->fetch_row() )
+    {
+      echo "<tr>";
+
+      for( $i = 0; $i < $numcols; $i++)
+      {
+        echo "<td>";
+        echo $row[$i];
+        echo "</td>";
+      }
+      echo "</tr>";
+    }
+
+    echo "</table>";
+
   }
-
-  echo "</table>";
-
+  else
+  {
+    echo "Error: ".$mysqli->error;
+  }
+  $result->free();
+  $mysqli->close();
 }
-else
-{
-  echo "Error: ".$mysqli->error;
-}
-$result->free();
-$mysqli->close();
 ?>
 </body>
 </html>

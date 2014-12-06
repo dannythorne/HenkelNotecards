@@ -17,14 +17,14 @@
   else
   {
     $id      = $_GET["id"];
-    $comment = $_GET["comment"];
+    $comment = $_GET["Comment"];
     echo $id;
     echo $comment;
 
     $query = "update CommentCard ";
     $query = $query."set ";
-    $query = $query."comment=$comment ";
-    $query = $query."where id=$id ";
+    $query = $query."Comment='$comment' ";
+    $query = $query."where CommentCardId=$id;";
 
     $result = $mysqli->query( $query );
 

@@ -7,16 +7,13 @@
 <body>
 
 <?php
+  require_once("global_vars.php");
   $comment = $_GET["comment"];
 
   echo "<div>";
   echo "Comment: <strong>$comment</strong>";
   echo "</div>";
 
-  $host = "";
-  $username = "";
-  $password = "";
-  $database = "";
 
   $mysqli = new mysqli( $host, $username, $password, $database);
 
@@ -29,7 +26,7 @@
     $query = "insert into CommentCard values( 0,";
     $query = $query."'".$comment;
 
-    $result = $mysqli->query( query );
+    $result = $mysqli->query( $query );
 
     if( $result )
     {
