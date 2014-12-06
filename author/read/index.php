@@ -1,15 +1,23 @@
-<-- jfkdal;fjdf -->
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Henkel's Notecards | Authors</title>
+<link href="../../css/common.css" rel="stylesheet" type="text/css"/>
+<title>Author | Read</title>
 </head>
 <body>
-<h1>Henkel's Notecards</h1>
-<h2>Author Table</h2>
+
+<p id="nav">
+<span class="navitem"><a href="../../">Index</a></span>
+|
+<span class="navitem"><a href="../">Author</a></span>
+</p>
+
+<h1>Henkel's NoteCards</h1>
+<h2>Author Table</h2> 
+<h3>Read</h3> 
 
 <?PHP
-	require_once("global_vars.php");
+	require_once("../../global_vars.php");
 
 	$mysqli = new mysqli($host, $username, $password, $database);
 
@@ -19,14 +27,11 @@
 	}
 	else
 	{
-
 		$query = "select Name from Author;";
-
 		$result = $mysqli->query($query);
 
 		if( $result )
 		{
-
 			$num_rows = $result->num_rows;
 			$field_count = $result->field_count;
 			$fields = $result->fetch_fields(); //returns an array
