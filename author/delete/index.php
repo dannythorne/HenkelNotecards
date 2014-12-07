@@ -2,7 +2,7 @@
 <html>
 <head>
 <link href="../../css/common.css" rel="stylesheet" type="text/css"/>
-<title>Author | Update</title>
+<title>Author | Delete</title>
 </head>
 <body>
 
@@ -14,20 +14,14 @@
 
 <h1>Henkel's NoteCards</h1>
 <h2>Author Table</h2> 
-<h3>Update</h3> 
-<h4>Update an Author's name</h4>
+<h3>Delete</h3> 
 
-<form action="author_update.php">
+<form action="author_delete.php">
 <div>
-Enter Author id: <input type="text" name="id"/>
-</div>
-<div>
-Enter New Name: <input type="text" name="name"/>
-</div>
+Delete an Author (enter id): <input type="text" name="id"/>
 <input type="submit" value="submit"/>
+</div>
 </form>
-
-
 
 <?PHP
 require_once("../../global_vars.php");
@@ -79,3 +73,6 @@ else
 	$mysqli->close();
 }
 ?>
+
+</body>
+</html>

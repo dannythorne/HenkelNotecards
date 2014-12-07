@@ -2,7 +2,7 @@
 <html>
 <head>
 <link href="../../css/common.css" rel="stylesheet" type="text/css" />
-<title>Author | Create</title>
+<title>Author | Update</title>
 </head>
 <body>
 <p id="nav">
@@ -12,7 +12,7 @@
 </p>
 <h1>Henkel's NoteCards</h1>
 <h2>Author Table</h2>
-<h3>Create</h3>
+<h3>Update</h3>
 
 <?php
 require_once("../../global_vars.php");
@@ -25,42 +25,40 @@ if( mysqli_connect_errno() )
 }
 else
 {
-	$author = $_GET["author"];
-	if( $author === "" )
+	$id = $_GET["id"];
+	$newName = $_GET["name"];
+	if( $newName === "" )
 	{
 		echo "Can't add empty author name.";
 		echo "<p id='nav'>";
-		echo "<span class='navitem'><a href='./'>Add an author</a></span>";
+		echo "<span class='navitem'><a href='./'>Update an author</a></span>";
 		echo "</p>";
 	}
 	else
 	{
-
-		$query = $query."insert into Author values(0,";
-		$query = $query."'".$author."');";
+		
+		$query = $query."update Author set name='$newName' where id=$id;";
 
 		$result = $mysqli->query($query);
 
 		if($result)
 		{
-			echo "$author "; 
-			echo "added.";
-
+			echo "Author updated.";
 			echo "<p id='nav'>";
-			echo "<span class='navitem'><a href='./'>Add another author</a></span>";
+			echo "<span class='navitem'><a href='./'>Update another author</a></span>";
+			echo "</p>";
 		}
 		else
 		{
 			echo "Error";
-			echo "<span class='navitem'><a href='./'>Add an author</a></span>";
+			echo "<p id='nav'>";
+			echo "<span class='navitem'><a href='./'>Update an author</a></span>";
+			echo "</p>";
 		}
 	}
 }
 $mysqli->close();
 $mysqli->free();
-
 ?>
-
-
 </body>
 </html>
