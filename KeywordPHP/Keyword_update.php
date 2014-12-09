@@ -4,6 +4,7 @@
 <title>Title</title>
 </head>
 <body>
+
 <?php
 
 $id = $_GET["id"];
@@ -13,8 +14,8 @@ $comment = $_GET["Comment"];
 require_once("global_vars.php");
 
 
-
 $mysqli = new mysqli( $host, $username, $password, $database);
+
 if( mysqli_connect_errno())
 {
 	echo "ERROR: Error connecting to the database.";
@@ -22,24 +23,12 @@ if( mysqli_connect_errno())
 else
 {
 	$query = "update Keyword set Keyword='".$keyword."', Comment='".$comment."' where id=".$id.";";
-//	$query = $query."Keyword=";
-//	$query = $query."'";
-//	$query = $query.$keyword; 
-//	$query = $query."'";
-//	$query = $query.", ";
-//	$query = $query."Comment=";
-//	$query = $query."'";
-//	$query = $query.$comment;
-//	$query = $query."'";
-
-//	$query = $query."where id=";
-//	$query = $query.$id;
-//	$query = ";";
-
 	echo "<div>";
 	echo $query;
 	echo "</div>";
+
 	$result = $mysqli->query($query);
+
 	if( $result)
 	{
 		echo "Success!";
@@ -50,7 +39,10 @@ else
 		echo "ERROR: Error updating row!";
 	}
 }
+
 $mysqli->close();
+
 ?>
+
 </body>
 </html>

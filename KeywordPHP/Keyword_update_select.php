@@ -1,16 +1,17 @@
 <html>
 <head>
-
+<title>Update a Keyword Card</title>
 </head>
 <body>
+
+<h2>Update a Keyword Card</h2>
 
 <?php
 
 require_once("global_vars.php");
 
-
-
 $mysqli = new mysqli($host, $username, $password, $database);
+
 if(mysqli_connect_errno())
 {
 	echo "Error connecting to the database.";
@@ -19,6 +20,7 @@ else
 {
 	$query = "select * from Keyword;";
 	$result = $mysqli->query($query);
+
 	if( $result)
 	{
 		$numrows = $result->num_rows;
@@ -26,6 +28,7 @@ else
 
 		echo "<form action='Keyword_update_form.php'>";
 		echo "<select name='id'>";
+
 		while( $row = $result->fetch_row())
 		{
 			echo "<option ";
@@ -43,6 +46,7 @@ else
 	{
 		echo "Error querying the database.";
 	} 
+
 	$mysqli->close();
 }
 ?>
