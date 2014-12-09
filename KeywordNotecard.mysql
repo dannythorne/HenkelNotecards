@@ -1,0 +1,8 @@
+use HenkelNotecards;
+
+# Create the KeywordNotecard table.
+
+drop table if exists KeywordNotecard;
+create table
+KeywordNotecard( KeywordId int, NotecardId int);
+
