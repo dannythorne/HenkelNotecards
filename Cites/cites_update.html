@@ -79,14 +79,40 @@ var genEdit = function()
 
 var handleUpdate = function()
 {
-  // TODO: AJAX call to PHP script.
+  var select = document.updateform.cites_select;
+  var ids = select.value.split(" ");
 
-  // The following is temporary just to facilitate developing.
+  var args;
+  args = "";
+  args+= "coords=";
+  args+= document.updateform.updatefield.value;
+  args+= "&";
+  args+= "WorkId=";
+  args+= ids[0];
+  args+= "&";
+  args+= "NotecardId=";
+  args+= ids[1];
+
   var console = document.getElementById("console");
   console.innerHTML = "";
+
+  // TODO: AJAX call to PHP script.
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function()
+  {
+    if( req.readyState == 4 && req.status == 200)
+    {
+      console.innerHTML+="[ "+req.responseText+" ]";
+    }
+  }
+  req.open("POST","cites_update.php",true);
+  req.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  req.send(args);
+
+  // The following is temporary just to facilitate developing.
   console.innerHTML+= "update Cites set coords='";
   console.innerHTML+= document.updateform.updatefield.value;
-  console.innerHTML+= "' where WorkId=TODO and NotecardId=TODO;";
+  console.innerHTML+= "' where WorkId="+ids[0]+" and NotecardId="+ids[1]+";";
 }
 
 window.onload = function()
