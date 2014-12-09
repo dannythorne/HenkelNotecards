@@ -7,6 +7,7 @@ drop table if exists Keyword;
 create table
 Keyword( id int NOT NULL AUTO_INCREMENT PRIMARY KEY, Keyword char(100) NOT NULL, Comment char(100));
 
-
+insert into Keyword values (1, 'test', 'This is a test comment.');
+insert into Keyword values (2, 'test2', 'This is another test comment.');
 
 
