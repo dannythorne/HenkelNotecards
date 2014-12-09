@@ -1,0 +1,19 @@
+
+use HenkelNotecards;
+
+drop table if exists Work;
+create table Work(
+  id int auto_increment primary key,
+  Name varchar(64),
+  Abbr varchar(64),
+  Year int,
+  AuthorId int
+);
+
+insert into Work values(0, "Aeneid", "An", -24, 0);
+insert into Work values(0, "Sqaw", "Sq", 23, 0);
+insert into Work values(0, "Dewetrty", "Dw", -125, 0);
+insert into Work values(0, "Jeaty", "Jt", -2, 0);
+
+show tables;
+select * from Work;
