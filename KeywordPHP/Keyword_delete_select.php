@@ -1,5 +1,6 @@
 <html>
 <head>
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
 <title>Delete a Keyword Card</title>
 </head>
 <body>

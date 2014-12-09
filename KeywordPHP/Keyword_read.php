@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
 <title>Keyword_read</title>
 </head>
 <body>
