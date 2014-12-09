@@ -68,7 +68,7 @@ else{
 }
 ?>
 
-<div><a href="./Work_read.html">Show Table</a></div>
+<div><a href="./Work_read.php">Show Table</a></div>
 
 <script>
 </script>
