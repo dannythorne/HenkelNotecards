@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
+<title>Update a Reference</title>
+</head>
+<body>
+
+<p id="nav">
+<span class="navitem"><a href="../index.html">Index</a></span>
+|
+<span class="navitem"><a href="./index.html">Cites</a></span>
+</p>
+
+<h1>Henkel's Notecards</h1>
+<h2>Cites Table</h2>
+<h3>Update</h3>
+
+
+<form id="updateform" name="updateform">
+<div id="citesdropdown">
+</div>
+
+<div id="citesedit">
+</div>
+
+</form>
+
+<div id="console">
+</div>
+
+<script>
+var genSelect = function()
+{
+  var req = new XMLHttpRequest();
+
+  req.onreadystatechange = function()
+  {
+    if( req.readyState == 4 && req.status == 200 )
+    {
+      var div = document.getElementById("citesdropdown");
+      var select = document.createElement("select");
+      select.innerHTML = req.responseText; // option elements
+      select.name = "cites_select";
+      select.onchange = genEdit;
+      div.appendChild(select);
+    }
+  }
+
+  req.open("GET","cites_options.php",true);
+  req.send();
+}
+
+var genEdit = function()
+{
+  var select = document.updateform.cites_select;
+  var ids = select.value.split(" ");
+  if( select.value)
+  {
+    var div = document.getElementById("citesedit");
+    div.innerHTML = "Edit: ";
+    div.innerHTML+= "Notecard ";
+    div.innerHTML+= ids[1];
+    div.innerHTML+= " cites work ";
+    div.innerHTML+= ids[0];
+    div.innerHTML+= " at ";
+    var input = document.createElement("input");
+    input.value = select.options[select.selectedIndex].text;
+    input.name = "updatefield";
+    div.appendChild(input);
+    var button = document.createElement("button");
+    button.type = "button";
+    button.innerHTML = "Update";
+    button.name = "Update";
+    button.onclick = handleUpdate;
+    div.appendChild(button);
+  }
+}
+
+var handleUpdate = function()
+{
+  var select = document.updateform.cites_select;
+  var ids = select.value.split(" ");
+
+  var args;
+  args = "";
+  args+= "coords=";
+  args+= document.updateform.updatefield.value;
+  args+= "&";
+  args+= "WorkId=";
+  args+= ids[0];
+  args+= "&";
+  args+= "NotecardId=";
+  args+= ids[1];
+
+  var console = document.getElementById("console");
+  console.innerHTML = "";
+
+  // TODO: AJAX call to PHP script.
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function()
+  {
+    if( req.readyState == 4 && req.status == 200)
+    {
+      console.innerHTML+="[ "+req.responseText+" ]";
+    }
+  }
+  req.open("POST","cites_update.php",true);
+  req.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  req.send(args);
+
+  // The following is temporary just to facilitate developing.
+  console.innerHTML+= "update Cites set coords='";
+  console.innerHTML+= document.updateform.updatefield.value;
+  console.innerHTML+= "' where WorkId="+ids[0]+" and NotecardId="+ids[1]+";";
+}
+
+window.onload = function()
+{
+  genSelect();
+  genEdit();
+}
+</script>
+
+</body>
+</html>
