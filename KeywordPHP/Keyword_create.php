@@ -47,7 +47,7 @@ else
 	}
 	else
 	{
-		echo "ERROR: Errow inserting row!";
+		echo "ERROR: Error inserting row!";
 
 	}
 }
