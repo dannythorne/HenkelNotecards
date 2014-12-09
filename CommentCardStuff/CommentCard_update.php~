@@ -23,7 +23,7 @@
 
     $query = "update CommentCard ";
     $query = $query."set ";
-    $query = $query."Comment=$comment ";
+    $query = $query."Comment='$comment' ";
     $query = $query."where CommentCardId=$id;";
 
     $result = $mysqli->query( $query );

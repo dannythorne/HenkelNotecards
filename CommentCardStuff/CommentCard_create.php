@@ -3,8 +3,10 @@
 <html>
 <head>
 <title>CommentCard create </title>
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<h1>Comment Card Create</h1>
 
 <?php
   require_once("global_vars.php");

@@ -3,6 +3,7 @@
 <html>
 <head>
 <title>CommentCard create </title>
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
@@ -24,7 +25,7 @@
   else
   {
     $query = "insert into CommentCard values( 0,";
-    $query = $query."'".$comment;
+    $query = $query."'".$comment."');";
 
     $result = $mysqli->query( $query );
 

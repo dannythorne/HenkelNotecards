@@ -2,9 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
 <title> Comment delete from CommentCard </title>
 </head>
 <body>
+<h1>Delete a Comment from the CommentCard table</h1>
 
 <?php
   require_once( "global_vars.php" );

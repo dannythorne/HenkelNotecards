@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
 <title> Comment Card update </title>
 </head>
 <body>
