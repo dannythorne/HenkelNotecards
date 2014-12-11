@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
+<title>Delete a Reference</title>
+</head>
+<body>
+
+<p id="nav">
+<span class="navitem"><a href="../index.html">Index</a></span>
+|
+<span class="navitem"><a href="./index.html">Cites</a></span>
+</p>
+
+<h1>Henkel's Notecards</h1>
+<h2>Cites Table</h2>
+<h3>Delete</h3>
+
+
+<form id="deleteform" name="deleteform">
+<div id="citesdropdown">
+</div>
+
+<div id="citesedit">
+</div>
+
+</form>
+
+<div id="console">
+</div>
+
+<script>
+var genSelect = function()
+{
+  var req = new XMLHttpRequest();
+
+  req.onreadystatechange = function()
+  {
+    if( req.readyState == 4 && req.status == 200 )
+    {
+      var div = document.getElementById("citesdropdown");
+      var select = document.createElement("select");
+      select.innerHTML = req.responseText; // option elements
+      select.name = "cites_select";
+      select.onchange = genEdit;
+      div.appendChild(select);
+    }
+  }
+
+  req.open("GET","cites_options.php",true);
+  req.send();
+}
+
+var genEdit = function()
+{
+  var select = document.deleteform.cites_select;
+  var vals = select.value.split("|");
+  if( select.value)
+  {
+    var div = document.getElementById("citesedit");
+    div.innerHTML = "";
+    div.innerHTML+= "Notecard ";
+    div.innerHTML+= vals[1];
+    div.innerHTML+= " cites ";
+    div.innerHTML+= vals[3];
+    div.innerHTML+= " at ";
+    div.innerHTML+= vals[2];
+    var button = document.createElement("button");
+    button.type = "button";
+    button.innerHTML = "Delete";
+    button.name = "Delete";
+    button.onclick = handleDelete;
+    div.appendChild(button);
+  }
+}
+
+var handleDelete = function()
+{
+  var select = document.deleteform.cites_select;
+  var vals = select.value.split("|");
+
+  var args;
+  args = "";
+  args+= "WorkId=";
+  args+= vals[0];
+  args+= "&";
+  args+= "NotecardId=";
+  args+= vals[1];
+
+  var console = document.getElementById("console");
+  console.innerHTML = "";
+
+  // TODO: AJAX call to PHP script.
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function()
+  {
+    if( req.readyState == 4 && req.status == 200)
+    {
+      console.innerHTML+="[ "+req.responseText+" ]";
+    }
+  }
+  req.open("POST","cites_delete.php",true);
+  req.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  req.send(args);
+}
+
+window.onload = function()
+{
+  genSelect();
+  genEdit();
+}
+</script>
+
+</body>
+</html>

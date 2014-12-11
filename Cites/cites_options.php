@@ -19,7 +19,7 @@ else
 
     $fields = $result->fetch_fields();
 
-    echo "<option value=''>Select a reference to edit.</option>";
+    echo "<option value=''>Select a reference.</option>";
 
     while( $row = $result->fetch_assoc())
     {
