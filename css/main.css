@@ -1,0 +1,40 @@
+
+body
+{
+  background-color:#e0e0e0;
+}
+
+#keywords
+{
+  background-color:#ffffff;
+  min-height:200px;
+  margin-bottom:1em;
+  padding:0.5em;
+}
+
+#keywords > a
+{
+  margin-left:0.5em;
+  margin-right:0.5em;
+  background-color:#000000;
+  color:#ffffff;
+  padding-left:4px;
+  padding-right:4px;
+  border-radius:4px;
+}
+
+#crudnavlist > li
+{
+  display:inline;
+  margin-right:0;
+  margin-left:0.5em;
+  padding-right:0.5em;
+  padding-left:0;
+  border-right:1px solid #909090;
+}
+
+#crudnavlist > li:first-child
+{
+  padding-left:0.5em;
+  border-left:1px solid #909090;
+}
