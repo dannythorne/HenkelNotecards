@@ -50,13 +50,27 @@ else
 
       $getwork = "select * from Work where id=".$row['workId'].";";
       $work = $mysqli->query($getwork);
-      $workrow = $work->fetch_assoc();
-      $workname = $workrow["Name"];
+      if( $work)
+      {
+        $workrow = $work->fetch_assoc();
+        $workname = $workrow["Name"];
+      }
+      else
+      {
+        $workname = "N/A";
+      }
 
       $getauthor = "select * from Author where id=".$workrow['AuthorId'];
       $author = $mysqli->query($getauthor);
-      $authorrow = $author->fetch_assoc();
-      $authorname = $authorrow["Name"];
+      if( $author)
+      {
+        $authorrow = $author->fetch_assoc();
+        $authorname = $authorrow["Name"];
+      }
+      else
+      {
+        $authorname = "N/A";
+      }
 
       echo "<option value='".$row[$id]."'>";
       echo $keywords." in ".$authorname."'s ".$workname;

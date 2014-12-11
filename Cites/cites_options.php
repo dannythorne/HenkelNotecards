@@ -21,14 +21,32 @@ else
 
     echo "<option value=''>Select a reference to edit.</option>";
 
-    while( $row = $result->fetch_row())
+    while( $row = $result->fetch_assoc())
     {
+      $getwork = "select * from Work where id=".$row['WorkId'].";";
+      $work = $mysqli->query($getwork);
+      if($work)
+      {
+        $workrow = $work->fetch_assoc();
+        $workname = $workrow["Name"];
+      }
+      else
+      {
+        $workname = "N/A";
+      }
+
       echo "<option value='";
-      echo $row[0];
-      echo " ";
-      echo $row[1];
+      echo $row['WorkId'];
+      echo "|";
+      echo $row['NotecardId'];
+      echo "|";
+      echo $row['coords'];
+      echo "|";
+      echo $workname;
       echo "'>";
-      echo $row[2];
+      echo "Notecard ".$row['NotecardId']." cites "
+                      .$workname." at "
+                      .$row['coords'];
       echo "</option>";
     }
   }

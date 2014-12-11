@@ -54,18 +54,18 @@ var genSelect = function()
 var genEdit = function()
 {
   var select = document.updateform.cites_select;
-  var ids = select.value.split(" ");
+  var vals = select.value.split("|");
   if( select.value)
   {
     var div = document.getElementById("citesedit");
     div.innerHTML = "Edit: ";
     div.innerHTML+= "Notecard ";
-    div.innerHTML+= ids[1];
-    div.innerHTML+= " cites work ";
-    div.innerHTML+= ids[0];
+    div.innerHTML+= vals[1];
+    div.innerHTML+= " cites ";
+    div.innerHTML+= vals[3];
     div.innerHTML+= " at ";
     var input = document.createElement("input");
-    input.value = select.options[select.selectedIndex].text;
+    input.value = vals[2]; // select.options[select.selectedIndex].text;
     input.name = "updatefield";
     div.appendChild(input);
     var button = document.createElement("button");

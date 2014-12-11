@@ -31,8 +31,15 @@ else
     {
       $getauthor = "select * from Author where id=".$row['AuthorId'];
       $author = $mysqli->query($getauthor);
-      $authorrow = $author->fetch_assoc();
-      $authorname = $authorrow["Name"];
+      if( $author)
+      {
+        $authorrow = $author->fetch_assoc();
+        $authorname = $authorrow["Name"];
+      }
+      else
+      {
+        $authorname = "N/A";
+      }
 
       echo "<option value='".$row[$id]."'>";
       echo "\"".$row['Name']."\" by ".$authorname;
