@@ -53,8 +53,13 @@ else
       $workrow = $work->fetch_assoc();
       $workname = $workrow["Name"];
 
+      $getauthor = "select * from Author where id=".$workrow['AuthorId'];
+      $author = $mysqli->query($getauthor);
+      $authorrow = $author->fetch_assoc();
+      $authorname = $authorrow["Name"];
+
       echo "<option value='".$row[$id]."'>";
-      echo $keywords." in ".$workname;
+      echo $keywords." in ".$authorname."'s ".$workname;
       echo "</option>";
     }
   }
