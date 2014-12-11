@@ -1,12 +1,18 @@
 <html>
 <head>
 <link href="./css/common.css" rel="stylesheet" type="text/css" />
-<title>Henkel Notecards</title>
+<link href="./css/main.css" rel="stylesheet" type="text/css" />
+<title>Henkel's Notecards</title>
 </head>
 <body>
-<h1>Henkel Notecards</h1>
+<h1>Henkel's Notecards</h1>
 
-<ul>
+<div id="keywords">
+</div>
+
+<div id="crudnav">
+Per table CRUD ops:
+<ul id="crudnavlist">
 <li><a href="./author">Author</a></li>
 <li><a href="./Cites">Cites</a></li>
 <li><a href="./CommentCardStuff">CommentCard</a></li>
@@ -16,6 +22,28 @@
 <li>Notecard</li>
 <li><a href="./Work/index.html">Work</a></li>
 </ul>
+</div>
+
+<script>
+function listKeywords()
+{
+  var keywordsdiv = document.getElementById("keywords");
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function()
+  {
+    if( req.readyState == 4 && req.status == 200)
+    {
+      keywordsdiv.innerHTML = req.responseText;
+    }
+  }
+  req.open("GET","./php/keyword_links.php",true);
+  req.send();
+}
+window.onload = function()
+{
+  listKeywords();
+}
+</script>
 
 </body>
 </html>
