@@ -1,3 +1,10 @@
+<html>
+<head>
+<link href="../css/common.css" rel="stylesheet" type="text/css" />
+<link href="../css/main.css" rel="stylesheet" type="text/css" />
+<title>Notecard</title>
+</head>
+<body>
 <?php
 require_once("../global_vars.php");
 
@@ -15,6 +22,8 @@ echo '</div>';
 echo '<h1>';
 echo 'Notecards for "'.$keyword.'".';
 echo '</h1>';
+
+echo '<div id="main">';
 
 $mysqli = new mysqli( $host, $username, $password, $database);
 
@@ -63,14 +72,12 @@ else
         $workname = "N/A";
       }
 
-      echo ' - ';
       echo '<a href="./notecard.php';
       echo '?id='.$row['NotecardId'];
       echo '&workname='.$workname;
       echo '">';
       echo $workname." ".$notecardcoords;
       echo '</a>';
-      echo ' - ';
     }
   }
   else
@@ -80,5 +87,8 @@ else
 
   $mysqli->close();
 }
+echo '</div>';
 
 ?>
+</body>
+</html>

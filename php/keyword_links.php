@@ -9,7 +9,7 @@ if( mysqli_connect_errno())
 }
 else
 {
-  $query = "select * from Keyword;";
+  $query = "select * from Keyword order by Keyword;";
   $result = $mysqli->query($query);
 
   if( $result)
