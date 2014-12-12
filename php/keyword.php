@@ -5,6 +5,13 @@ $WorkId = "WorkId";
 
 $id = $_GET["id"];
 $keyword = $_GET["keyword"];
+
+echo '<div id="nav">';
+echo '<a href="../index.html">';
+echo 'Home';
+echo '</a>';
+echo '</div>';
+
 echo '<h1>';
 echo 'Notecards for "'.$keyword.'".';
 echo '</h1>';
