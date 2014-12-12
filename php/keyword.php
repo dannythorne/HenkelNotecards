@@ -57,7 +57,10 @@ else
       }
 
       echo ' - ';
-      echo '<a href="./notecard.php?id='.$row['NotecardId'].'">';
+      echo '<a href="./notecard.php';
+      echo '?id='.$row['NotecardId'];
+      echo '&workname='.$workname;
+      echo '">';
       echo $workname." ".$notecardcoords;
       echo '</a>';
       echo ' - ';
