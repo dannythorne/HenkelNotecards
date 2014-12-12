@@ -38,3 +38,8 @@ body
   padding-left:0.5em;
   border-left:1px solid #909090;
 }
+
+#comment
+{
+  margin-bottom:1em;
+}

@@ -23,8 +23,6 @@ echo '<h1>';
 echo 'Notecards for "'.$keyword.'".';
 echo '</h1>';
 
-echo '<div id="main">';
-
 $mysqli = new mysqli( $host, $username, $password, $database);
 
 if( mysqli_connect_errno())
@@ -33,6 +31,23 @@ if( mysqli_connect_errno())
 }
 else
 {
+
+  echo "<div id='comment'>";
+  $query = "";
+  $query = $query."select * from Keyword where id=".$id.";";
+  $result = $mysqli->query($query);
+  if( $result)
+  {
+    $row = $result->fetch_assoc();
+    echo $row["Comment"];
+  }
+  else
+  {
+  }
+  echo "</div>";
+
+  echo '<div id="main">';
+
   $query = "";
   $query = $query."select * from Keyword, KeywordNotecard, Notecard";
   $query = $query." where Keyword.id=KeywordNotecard.KeywordId";
@@ -85,9 +100,10 @@ else
     echo "ERROR";
   }
 
+  echo '</div>';
+
   $mysqli->close();
 }
-echo '</div>';
 
 ?>
 </body>
