@@ -7,6 +7,13 @@
 <body>
 <h1>Henkel's Notecards</h1>
 
+<div>
+<button onclick='add()'>+</button>
+</div>
+
+<div id="add">
+</div>
+
 <div id="main">
 </div>
 
@@ -38,6 +45,11 @@ function listKeywords()
   }
   req.open("GET","./php/keyword_links.php",true);
   req.send();
+}
+function add()
+{
+  var add = document.getElementById("add");
+  add.innerHTML = "TODO: Add a keyword.";
 }
 window.onload = function()
 {

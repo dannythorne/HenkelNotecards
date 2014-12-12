@@ -119,7 +119,47 @@ else
 function add()
 {
   var add = document.getElementById("add");
-  add.innerHTML = "TODO: Add a Notecard.";
+  if( add.style.display == "block") // true only after first click
+  {
+    add.style.display = "none"; // hide it
+  }
+  else
+  {
+    if( !add.style.display) // never been clicked
+    {
+      add.innerHTML = "TODO: Add a Notecard.";
+      var form = document.createElement("form");
+
+      var div = document.createElement("div");
+      var workField = document.createElement("input");
+      workField.type = "text";
+      workField.value = "Work (TODO: Dropdown box.)";
+      div.appendChild(workField);
+      form.appendChild(div);
+
+      div = document.createElement("div");
+      var coordsField = document.createElement("input");
+      coordsField.type = "text";
+      coordsField.value = "Coords";
+      div.appendChild(coordsField);
+      form.appendChild(div);
+
+      div = document.createElement("div");
+      var commentField = document.createElement("textarea");
+      commentField.value = "Comment";
+      commentField.rows = "5";
+      commentField.cols = "48";
+      div.appendChild(commentField);
+      form.appendChild(div);
+      add.appendChild(form);
+    }
+
+    add.style.display = "block"; // initialize display style
+    // NOTE: Prior to this, the display style of the add div was a "computed"
+    // style and no value was being stored in add.style.display (unless someone
+    // puts a style attribute on the add div to specify the display style
+    // explicely inline, which hopefully will never happen).
+  }
 }
 </script>
 
