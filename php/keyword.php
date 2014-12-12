@@ -1,7 +1,7 @@
 <?php
 require_once("../global_vars.php");
 
-$WorkId = "workId"; // ...should be WorkId
+$WorkId = "WorkId";
 
 $id = $_GET["id"];
 $keyword = $_GET["keyword"];

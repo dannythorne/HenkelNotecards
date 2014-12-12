@@ -38,7 +38,9 @@ else
       while( $keywordrow = $keywords->fetch_assoc())
       {
         echo " - ";
+        echo '<a href="./keyword.php?id='.$keywordrow["KeywordId"].'&keyword='.$keywordrow["Keyword"].'">';
         echo $keywordrow["Keyword"];
+        echo "</a>";
         echo " - ";
       }
     }
