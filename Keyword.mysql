@@ -5,8 +5,14 @@ use HenkelNotecards;
 
 drop table if exists Keyword;
 create table
-Keyword( id int NOT NULL AUTO_INCREMENT PRIMARY KEY, Keyword char(100) NOT NULL, Comment char(100));
+Keyword( id int NOT NULL AUTO_INCREMENT PRIMARY KEY, Keyword varchar(100) NOT NULL, Comment varchar(4096));
 
+insert into `Keyword` values
+  (6,'apple','red and green')
+, (2,'test2','This is another test comment.')
+, (4,'test3','Today is Tuesday.')
+, (5,'test again','Yet another test comment...')
+, (7,'sugar','sweet, granular, white, symbolizes acts of affection from a grandparent toward a grandchild, overtones of playful aggression');
 
 
 

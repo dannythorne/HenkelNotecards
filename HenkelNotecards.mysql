@@ -60,7 +60,7 @@ CREATE TABLE `Cites` (
 
 LOCK TABLES `Cites` WRITE;
 /*!40000 ALTER TABLE `Cites` DISABLE KEYS */;
-INSERT INTO `Cites` VALUES (1,1,'X 1.1'),(2,3,'X 1.4'),(4,3,'X 3.4'),(2,5,'X 5.2'),(1,4,'X 0.0'),(4,1,'X 1.2'),(4,4,'X 4.4'),(3,2,'X 0.9'),(3,4,'X 0.0'),(2,1,'askjf');
+INSERT INTO `Cites` VALUES (1,1,'X 1.1'),(2,3,'X 1.4'),(4,3,'X 3.4'),(2,5,'X 5.2'),(1,4,'X 0.0'),(4,1,'X 1.2'),(4,4,'X 4.4'),(3,2,'X 0.9'),(3,4,'X 0.0'),(1,3,'X 17.23');
 /*!40000 ALTER TABLE `Cites` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -100,7 +100,7 @@ CREATE TABLE `Keyword` (
   `Keyword` char(100) NOT NULL,
   `Comment` char(100) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +109,7 @@ CREATE TABLE `Keyword` (
 
 LOCK TABLES `Keyword` WRITE;
 /*!40000 ALTER TABLE `Keyword` DISABLE KEYS */;
-INSERT INTO `Keyword` VALUES (2,'test2','This is another test comment.'),(4,'test3','Today is Tuesday.'),(5,'test again','Yet another test comment...');
+INSERT INTO `Keyword` VALUES (6,'apple','red and green'),(2,'test2','This is another test comment.'),(4,'test3','Today is Tuesday.'),(5,'test again','Yet another test comment...'),(7,'sugar','sweet, granular, white, symbolizes acts of affection from a grandparent toward a grandchild, overton');
 /*!40000 ALTER TABLE `Keyword` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -166,12 +166,12 @@ DROP TABLE IF EXISTS `Notecard`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Notecard` (
-  `Id` int(11) NOT NULL auto_increment,
+  `id` int(11) NOT NULL auto_increment,
   `coords` varchar(32) default NULL,
-  `Comment` char(1) default NULL,
+  `Comment` varchar(4096) default NULL,
   `Position` int(11) default NULL,
-  `workId` int(11) default NULL,
-  PRIMARY KEY  (`Id`)
+  `WorkId` int(11) default NULL,
+  PRIMARY KEY  (`id`)
 ) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -181,7 +181,7 @@ CREATE TABLE `Notecard` (
 
 LOCK TABLES `Notecard` WRITE;
 /*!40000 ALTER TABLE `Notecard` DISABLE KEYS */;
-INSERT INTO `Notecard` VALUES (1,'X 1.1.1','a',0,3),(2,'X 1.1.2','a',0,2),(3,'X 1.1.3','a',0,6),(4,'X 1.1.4','a',0,3);
+INSERT INTO `Notecard` VALUES (1,'X 1.1.1','this and that',0,3),(2,'X 1.1.2','such and such',0,2),(3,'X 1.1.3','this and such',0,6),(4,'X 1.1.4','such and that',0,3);
 /*!40000 ALTER TABLE `Notecard` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,4 +221,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-11 12:19:39
+-- Dump completed on 2014-12-12 12:33:47
