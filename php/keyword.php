@@ -46,6 +46,15 @@ else
   }
   echo "</div>";
 
+  echo "<div>";
+  echo "<button onclick='add()'>";
+  echo "+";
+  echo "</button>";
+  echo "</div>";
+
+  echo '<div id="add">';
+  echo "</div>";
+
   echo '<div id="main">';
 
   $query = "";
@@ -104,7 +113,15 @@ else
 
   $mysqli->close();
 }
-
 ?>
+
+<script>
+function add()
+{
+  var add = document.getElementById("add");
+  add.innerHTML = "TODO: Add a Notecard.";
+}
+</script>
+
 </body>
 </html>
