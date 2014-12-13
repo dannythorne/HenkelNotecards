@@ -1,0 +1,21 @@
+use HenkelNotecards;
+
+# Create the Note card table.
+drop table if exists Notecard;
+create table Notecard(
+	 id int auto_increment primary key,
+	   coords varchar(32),
+	   Comment varchar,
+	   Position int,
+	   workId int);
+	   
+	   
+	   
+	   insert into Notecard values ( 22 , "This is the first comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the second comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the third comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the fourth comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the fifth comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the sixth comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the sevent comment", 22, 1 );
+	   insert into Notecard values ( 22 , "This is the eight comment", 22, 1 );
