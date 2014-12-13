@@ -127,23 +127,40 @@ function add()
   {
     if( !add.style.display) // never been clicked
     {
-      add.innerHTML = "TODO: Add a Notecard.";
       var form = document.createElement("form");
 
-      var div = document.createElement("div");
-      var workField = document.createElement("input");
-      workField.type = "text";
-      workField.value = "Work (TODO: Dropdown box.)";
-      div.appendChild(workField);
-      form.appendChild(div);
+      var div;
 
+      // Work dropdown and coords field
       div = document.createElement("div");
+
       var coordsField = document.createElement("input");
       coordsField.type = "text";
       coordsField.value = "Coords";
       div.appendChild(coordsField);
+
+      div.appendChild(document.createTextNode(" in "));
+      var workSelect = document.createElement("select");
+      var workOption = document.createElement("option");
+      workOption.innerHTML = "Work";
+      workSelect.appendChild(workOption);
+
+      var req = new XMLHttpRequest();
+      req.onreadystatechange = function()
+      {
+        if( req.readyState == 4 && req.status == 200)
+        {
+          workSelect.innerHTML+= req.responseText;
+        }
+      }
+      req.open("GET","work_options.php",true);
+      req.send();
+
+      div.appendChild(workSelect);
+
       form.appendChild(div);
 
+      // Comment textarea
       div = document.createElement("div");
       var commentField = document.createElement("textarea");
       commentField.value = "Comment";
@@ -151,7 +168,20 @@ function add()
       commentField.cols = "48";
       div.appendChild(commentField);
       form.appendChild(div);
+
+      // Button
+      var button = document.createElement("button");
+      button.type = "button";
+      button.innerHTML = "Add (not yet functional)";
+      form.appendChild(button);
+
       add.appendChild(form);
+
+      // Put the following styles in a stylesheet?
+      add.style.position = "absolute";
+      add.style.backgroundColor = "#90c090";
+      add.style.padding = "1em";
+      add.style.borderRadius = "8px";
     }
 
     add.style.display = "block"; // initialize display style
