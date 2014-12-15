@@ -72,6 +72,11 @@ else
     echo $row["coords"];
     echo "</span>";
     echo "<div>";
+    echo "Passage: ";
+    echo $row["Passage"];
+    echo "</div>";
+    echo "<div>";
+    echo "Comment: ";
     echo $row["Comment"];
     echo "</div>";
   }
