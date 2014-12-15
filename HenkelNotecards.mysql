@@ -25,8 +25,9 @@ DROP TABLE IF EXISTS `Author`;
 CREATE TABLE `Author` (
   `id` int(10) NOT NULL auto_increment,
   `Name` char(20) NOT NULL,
-  PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=54 DEFAULT CHARSET=latin1;
+  PRIMARY KEY  (`id`),
+  UNIQUE KEY `Name` (`Name`)
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +36,7 @@ CREATE TABLE `Author` (
 
 LOCK TABLES `Author` WRITE;
 /*!40000 ALTER TABLE `Author` DISABLE KEYS */;
-INSERT INTO `Author` VALUES (52,'saasdffdas'),(1,'Haris'),(2,'Crawley the Shrewd'),(3,'Hehfay'),(4,'Jeff'),(13,'TEST'),(14,'TEST'),(15,'TEST'),(16,'TEST'),(17,'TEST'),(18,'TEST'),(19,'TEST'),(20,'blue'),(21,'Tst'),(22,'red'),(23,'fdaf'),(24,'fda'),(25,'fda'),(26,'fda'),(27,'fda'),(28,'fdafda'),(29,'fdafda'),(30,'fdafda'),(31,'fdafda'),(32,'ewq'),(34,'123'),(35,'123'),(36,'123'),(37,'321'),(38,'456'),(39,'3123'),(53,'dfsdsfdfs');
+INSERT INTO `Author` VALUES (1,'Danny the Wise'),(2,'Andrew'),(3,'Hehfay'),(4,'Jane'),(5,'Homer the Balanced'),(6,'Harris the King'),(7,'Crawley the Shrewd');
 /*!40000 ALTER TABLE `Author` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,7 +76,7 @@ CREATE TABLE `CommentCard` (
   `CommentCardId` int(11) NOT NULL auto_increment,
   `Comment` varchar(1024) default NULL,
   PRIMARY KEY  (`CommentCardId`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,7 +85,7 @@ CREATE TABLE `CommentCard` (
 
 LOCK TABLES `CommentCard` WRITE;
 /*!40000 ALTER TABLE `CommentCard` DISABLE KEYS */;
-INSERT INTO `CommentCard` VALUES (5,'1232131'),(3,'sdfkk');
+INSERT INTO `CommentCard` VALUES (5,'1232131'),(3,'sdfkk'),(7,'43243');
 /*!40000 ALTER TABLE `CommentCard` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,10 +98,10 @@ DROP TABLE IF EXISTS `Keyword`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `Keyword` (
   `id` int(11) NOT NULL auto_increment,
-  `Keyword` char(100) NOT NULL,
-  `Comment` char(100) default NULL,
+  `Keyword` varchar(100) NOT NULL,
+  `Comment` varchar(4096) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -109,7 +110,7 @@ CREATE TABLE `Keyword` (
 
 LOCK TABLES `Keyword` WRITE;
 /*!40000 ALTER TABLE `Keyword` DISABLE KEYS */;
-INSERT INTO `Keyword` VALUES (6,'apple','red and green'),(2,'test2','This is another test comment.'),(4,'test3','Today is Tuesday.'),(5,'test again','Yet another test comment...'),(7,'sugar','sweet, granular, white, symbolizes acts of affection from a grandparent toward a grandchild, overton');
+INSERT INTO `Keyword` VALUES (6,'apple','red and green, garden of eden, temptation'),(2,'test2','This is another test comment.'),(4,'test3','Today is Tuesday.'),(5,'test again','Yet another test comment...'),(7,'sugar','sweet, granular, white, symbolizes acts of affection from a grandparent toward a grandchild, overtones of playful aggression'),(8,'grass','green, sometimes soft, sometimes sharp, sometimes inviting, sometimes prohibitive');
 /*!40000 ALTER TABLE `Keyword` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +173,7 @@ CREATE TABLE `Notecard` (
   `Position` int(11) default NULL,
   `WorkId` int(11) default NULL,
   PRIMARY KEY  (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +182,7 @@ CREATE TABLE `Notecard` (
 
 LOCK TABLES `Notecard` WRITE;
 /*!40000 ALTER TABLE `Notecard` DISABLE KEYS */;
-INSERT INTO `Notecard` VALUES (1,'X 1.1.1','this and that',0,3),(2,'X 1.1.2','such and such',0,2),(3,'X 1.1.3','this and such',0,6),(4,'X 1.1.4','such and that',0,3);
+INSERT INTO `Notecard` VALUES (1,'X 1.1.1','this and that',0,3),(2,'X 1.1.2','such and such',0,2),(3,'X 1.1.3','this and such',0,6),(4,'X 1.1.4','such and that',0,3),(5,'22','This is the first comment',22,1),(6,'22','This is the second comment',22,1),(7,'22','This is the third comment',22,1),(8,'22','This is the fourth comment',22,1),(9,'22','This is the fifth comment',22,1),(10,'22','This is the sixth comment',22,1),(11,'22','This is the sevent comment',22,1),(12,'22','This is the eight comment',22,1);
 /*!40000 ALTER TABLE `Notecard` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,4 +222,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2014-12-12 12:33:47
+-- Dump completed on 2014-12-15 10:59:37

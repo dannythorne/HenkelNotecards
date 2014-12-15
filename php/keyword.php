@@ -43,6 +43,7 @@ else
   }
   else
   {
+    echo "Query returned no results.";
   }
   echo "</div>";
 
