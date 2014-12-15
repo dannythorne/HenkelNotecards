@@ -48,7 +48,7 @@ else
   echo "</div>";
 
   echo "<div>";
-  echo "<button onclick='showAddBox()'>";
+  echo "<button onclick='showAddBox(".$id.")'>";
   echo "+";
   echo "</button>";
   echo "</div>";
@@ -117,7 +117,7 @@ else
 ?>
 
 <script>
-function showAddBox()
+function showAddBox(id)
 {
   var add = document.getElementById("add");
   if( add.style.display == "block") // true only after first click
@@ -130,6 +130,12 @@ function showAddBox()
     {
       var form = document.createElement("form");
       form.name = "add";
+
+      var keyword_id_hidden_input = document.createElement("input");
+      keyword_id_hidden_input.type = "hidden";
+      keyword_id_hidden_input.name = "keyword_id";
+      keyword_id_hidden_input.value = id;
+      form.appendChild(keyword_id_hidden_input);
 
       var div;
 
@@ -225,6 +231,34 @@ function submitNotecard()
   div.appendChild(document.createTextNode(document.add.coords.value));
   div.appendChild(document.createTextNode(document.add.passage.value));
   div.appendChild(document.createTextNode(document.add.comment.value));
+
+  var args;
+  args = "";
+  args+= "WorkId="+document.add.work_select.value;
+  args+= "&";
+  args+= "KeywordId="+document.add.keyword_id.value;
+  args+= "&";
+  args+= "coords="+document.add.coords.value;
+  args+= "&";
+  args+= "Passage="+document.add.passage.value;
+  args+= "&";
+  args+= "Comment="+document.add.comment.value;
+  div.appendChild(document.createTextNode("args="+args));
+
+  var req;
+  req = new XMLHttpRequest();
+  req.onreadystatechange = function()
+  {
+    if( req.readyState == 4 && req.status == 200)
+    {
+      div.appendChild(document.createTextNode(req.responseText));
+    }
+  }
+  req.open("POST","notecard_add.php",true);
+  req.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  req.send(args);
+
+  div.appendChild(document.createTextNode("BING"));
 }
 </script>
 
