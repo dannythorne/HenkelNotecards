@@ -48,7 +48,7 @@ else
   echo "</div>";
 
   echo "<div>";
-  echo "<button onclick='add()'>";
+  echo "<button onclick='showAddBox()'>";
   echo "+";
   echo "</button>";
   echo "</div>";
@@ -117,7 +117,7 @@ else
 ?>
 
 <script>
-function add()
+function showAddBox()
 {
   var add = document.getElementById("add");
   if( add.style.display == "block") // true only after first click
@@ -129,6 +129,7 @@ function add()
     if( !add.style.display) // never been clicked
     {
       var form = document.createElement("form");
+      form.name = "add";
 
       var div;
 
@@ -136,12 +137,14 @@ function add()
       div = document.createElement("div");
 
       var coordsField = document.createElement("input");
+      coordsField.name = "coords";
       coordsField.type = "text";
       coordsField.value = "Coords";
       div.appendChild(coordsField);
 
       div.appendChild(document.createTextNode(" in "));
       var workSelect = document.createElement("select");
+      workSelect.name = "work_select";
       var workOption = document.createElement("option");
       workOption.innerHTML = "Work";
       workSelect.appendChild(workOption);
@@ -161,9 +164,20 @@ function add()
 
       form.appendChild(div);
 
+      // Passage textarea
+      div = document.createElement("div");
+      var passageField = document.createElement("textarea");
+      passageField.name = "passage";
+      passageField.value = "Passage";
+      passageField.rows = "5";
+      passageField.cols = "48";
+      div.appendChild(passageField);
+      form.appendChild(div);
+
       // Comment textarea
       div = document.createElement("div");
       var commentField = document.createElement("textarea");
+      commentField.name = "comment";
       commentField.value = "Comment";
       commentField.rows = "5";
       commentField.cols = "48";
@@ -174,6 +188,7 @@ function add()
       var button = document.createElement("button");
       button.type = "button";
       button.innerHTML = "Add (not yet functional)";
+      button.onclick = submitNotecard;
       form.appendChild(button);
 
       add.appendChild(form);
@@ -186,11 +201,30 @@ function add()
     }
 
     add.style.display = "block"; // initialize display style
-    // NOTE: Prior to this, the display style of the add div was a "computed"
-    // style and no value was being stored in add.style.display (unless someone
-    // puts a style attribute on the add div to specify the display style
-    // explicely inline, which hopefully will never happen).
+    // NOTE: Prior to the first time that this point in the code is reached,
+    // the display style of the add div was a "computed" style and no value was
+    // being stored in add.style.display (unless someone puts a style attribute
+    // on the add div to specify the display style explicely inline, which
+    // hopefully will never happen).
   }
+}
+
+function submitNotecard()
+{
+  var div = document.getElementById("add");
+  div.appendChild(document.createTextNode("Add pending!"));
+  div.appendChild(document.createTextNode(document.add.work_select.value));
+  div.appendChild(
+    document.createTextNode(
+      document.add
+              .work_select
+              .options[document.add.work_select.selectedIndex]
+              .text
+    )
+  );
+  div.appendChild(document.createTextNode(document.add.coords.value));
+  div.appendChild(document.createTextNode(document.add.passage.value));
+  div.appendChild(document.createTextNode(document.add.comment.value));
 }
 </script>
 
