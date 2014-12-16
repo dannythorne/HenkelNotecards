@@ -4,5 +4,5 @@ use HenkelNotecards;
 
 drop table if exists KeywordNotecard;
 create table
-KeywordNotecard( KeywordId int, NotecardId int);
+KeywordNotecard( KeywordId int(11), NotecardId int(11));
 

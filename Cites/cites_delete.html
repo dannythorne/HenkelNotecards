@@ -2,7 +2,7 @@
 <html>
 <head>
 <link href="../css/common.css" rel="stylesheet" type="text/css" />
-<title>Update a Reference</title>
+<title>Delete a Reference</title>
 </head>
 <body>
 
@@ -14,10 +14,10 @@
 
 <h1>Henkel's Notecards</h1>
 <h2>Cites Table</h2>
-<h3>Update</h3>
+<h3>Delete</h3>
 
 
-<form id="updateform" name="updateform">
+<form id="deleteform" name="deleteform">
 <div id="citesdropdown">
 </div>
 
@@ -53,45 +53,39 @@ var genSelect = function()
 
 var genEdit = function()
 {
-  var select = document.updateform.cites_select;
+  var select = document.deleteform.cites_select;
   var vals = select.value.split("|");
   if( select.value)
   {
     var div = document.getElementById("citesedit");
-    div.innerHTML = "Edit: ";
+    div.innerHTML = "";
     div.innerHTML+= "Notecard ";
     div.innerHTML+= vals[1];
     div.innerHTML+= " cites ";
     div.innerHTML+= vals[3];
     div.innerHTML+= " at ";
-    var input = document.createElement("input");
-    input.value = vals[2]; // select.options[select.selectedIndex].text;
-    input.name = "updatefield";
-    div.appendChild(input);
+    div.innerHTML+= vals[2];
     var button = document.createElement("button");
     button.type = "button";
-    button.innerHTML = "Update";
-    button.name = "Update";
-    button.onclick = handleUpdate;
+    button.innerHTML = "Delete";
+    button.name = "Delete";
+    button.onclick = handleDelete;
     div.appendChild(button);
   }
 }
 
-var handleUpdate = function()
+var handleDelete = function()
 {
-  var select = document.updateform.cites_select;
-  var ids = select.value.split(" ");
+  var select = document.deleteform.cites_select;
+  var vals = select.value.split("|");
 
   var args;
   args = "";
-  args+= "coords=";
-  args+= document.updateform.updatefield.value;
-  args+= "&";
   args+= "WorkId=";
-  args+= ids[0];
+  args+= vals[0];
   args+= "&";
   args+= "NotecardId=";
-  args+= ids[1];
+  args+= vals[1];
 
   var console = document.getElementById("console");
   console.innerHTML = "";
@@ -105,14 +99,9 @@ var handleUpdate = function()
       console.innerHTML+="[ "+req.responseText+" ]";
     }
   }
-  req.open("POST","cites_update.php",true);
+  req.open("POST","cites_delete.php",true);
   req.setRequestHeader("content-type","application/x-www-form-urlencoded");
   req.send(args);
-
-  // The following is temporary just to facilitate developing.
-  console.innerHTML+= "update Cites set coords='";
-  console.innerHTML+= document.updateform.updatefield.value;
-  console.innerHTML+= "' where WorkId="+ids[0]+" and NotecardId="+ids[1]+";";
 }
 
 window.onload = function()

@@ -3,8 +3,11 @@ use HenkelNotecards;
 drop table if exists Author;
 
 CREATE TABLE Author (
-	id INT(10) NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	Name CHAR(20) NOT NULL );
+	id INT(10) NOT NULL AUTO_INCREMENT,
+	Name CHAR(20) NOT NULL,
+	PRIMARY KEY (id),
+	UNIQUE (Name)
+	);
 
 insert into Author values ( 0 , "Danny the Wise" );
 insert into Author values ( 0 , "Andrew the Drunkard" );

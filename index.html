@@ -1,21 +1,138 @@
 <html>
 <head>
 <link href="./css/common.css" rel="stylesheet" type="text/css" />
-<title>Henkel Notecards</title>
+<link href="./css/main.css" rel="stylesheet" type="text/css" />
+<title>Henkel's Notecards</title>
 </head>
 <body>
-<h1>Henkel Notecards</h1>
+<h1>Henkel's Notecards</h1>
 
-<ul>
+<div>
+<button onclick='showAddBox()'>+</button>
+</div>
+
+<div id="add">
+</div>
+
+<div id="main">
+</div>
+
+<div id="crudnav">
+Per table CRUD ops:
+<ul id="crudnavlist">
 <li><a href="./author">Author</a></li>
 <li><a href="./Cites">Cites</a></li>
-<li>CommentCard</li>
+<li><a href="./CommentCardStuff">CommentCard</a></li>
 <li><a href="./KeywordPHP">Keyword</a></li>
 <li>KeywordNotecard</li>
 <li>KeywordWork</li>
 <li>Notecard</li>
 <li><a href="./Work/index.html">Work</a></li>
 </ul>
+</div>
+
+<script>
+function listKeywords()
+{
+  var keywordsdiv = document.getElementById("main");
+  var req = new XMLHttpRequest();
+  req.onreadystatechange = function()
+  {
+    if( req.readyState == 4 && req.status == 200)
+    {
+      keywordsdiv.innerHTML = req.responseText;
+    }
+  }
+  req.open("GET","./php/keyword_links.php",true);
+  req.send();
+}
+function showAddBox()
+{
+  var add = document.getElementById("add");
+  if( add.style.display == "block") // true only after first click
+  {
+    add.style.display = "none"; // hide it
+  }
+  else
+  {
+    if( !add.style.display) // never been clicked
+    {
+      var form = document.createElement("form");
+      form.name = "add";
+
+      var div;
+
+      // Keyword input field
+      div = document.createElement("div");
+      var keywordField = document.createElement("input");
+      keywordField.type = "text";
+      keywordField.name = "keyword";
+      keywordField.value = "Keyword";
+      div.appendChild(keywordField);
+      form.appendChild(div);
+
+      // Comment textarea
+      div = document.createElement("div");
+      var commentField = document.createElement("textarea");
+      commentField.name = "comment";
+      commentField.value = "Comment";
+      commentField.rows = "5";
+      commentField.cols = "48";
+      div.appendChild(commentField);
+      form.appendChild(div);
+
+      // Button
+      var button = document.createElement("button");
+      button.type = "button";
+      button.innerHTML = "Add";
+      button.onclick = submitKeyword;
+      form.appendChild(button);
+
+      add.appendChild(form);
+
+      // Put the following styles in a stylesheet?
+      add.style.position = "absolute";
+      add.style.backgroundColor = "#90c090";
+      add.style.padding = "1em";
+      add.style.borderRadius = "8px";
+    }
+
+    add.style.display = "block"; // initialize display style
+    // NOTE: Prior to the first time that this point in the code is reached,
+    // the display style of the add div was a "computed" style and no value was
+    // being stored in add.style.display (unless someone puts a style attribute
+    // on the add div to specify the display style explicely inline, which
+    // hopefully will never happen).
+  }
+}
+function submitKeyword()
+{
+  var add = document.getElementById("add");
+
+  var args;
+  args = "";
+  args+= "Keyword="+document.add.keyword.value;
+  args+= "&";
+  args+= "Comment="+document.add.comment.value;
+
+  var req;
+  req = new XMLHttpRequest();
+  req.onreadystatechange = function()
+  {
+    if( req.readyState == 4 && req.status == 200)
+    {
+      add.appendChild(document.createTextNode(req.responseText));
+    }
+  }
+  req.open("POST","./php/keyword_add.php",true);
+  req.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  req.send(args);
+}
+window.onload = function()
+{
+  listKeywords();
+}
+</script>
 
 </body>
 </html>
