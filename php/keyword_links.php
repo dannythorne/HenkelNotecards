@@ -16,7 +16,8 @@ else
   {
     while( $row = $result->fetch_assoc())
     {
-      echo '<a href="./php/keyword.php?id='.$row["id"].'&keyword='.$row["Keyword"].'">';
+      echo '<a href="./php/keyword.php?id='.$row["id"].'&keyword='
+                                           .$row["Keyword"].'">';
       echo $row["Keyword"];
       echo "</a>";
     }

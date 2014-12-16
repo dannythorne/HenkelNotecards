@@ -188,6 +188,7 @@ function showAddBox(id)
       commentField.rows = "5";
       commentField.cols = "48";
       div.appendChild(commentField);
+
       form.appendChild(div);
 
       // Button
@@ -218,19 +219,6 @@ function showAddBox(id)
 function submitNotecard()
 {
   var div = document.getElementById("add");
-  div.appendChild(document.createTextNode("Add pending!"));
-  div.appendChild(document.createTextNode(document.add.work_select.value));
-  div.appendChild(
-    document.createTextNode(
-      document.add
-              .work_select
-              .options[document.add.work_select.selectedIndex]
-              .text
-    )
-  );
-  div.appendChild(document.createTextNode(document.add.coords.value));
-  div.appendChild(document.createTextNode(document.add.passage.value));
-  div.appendChild(document.createTextNode(document.add.comment.value));
 
   var args;
   args = "";
@@ -243,7 +231,6 @@ function submitNotecard()
   args+= "Passage="+document.add.passage.value;
   args+= "&";
   args+= "Comment="+document.add.comment.value;
-  div.appendChild(document.createTextNode("args="+args));
 
   var req;
   req = new XMLHttpRequest();
@@ -257,8 +244,6 @@ function submitNotecard()
   req.open("POST","notecard_add.php",true);
   req.setRequestHeader("content-type","application/x-www-form-urlencoded");
   req.send(args);
-
-  div.appendChild(document.createTextNode("BING"));
 }
 </script>
 
