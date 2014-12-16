@@ -1,7 +1,7 @@
 <?php
 require_once("../global_vars.php");
 
-$id = "Id"; // ...pending change to "id".
+$id = "id"; // ...pending change to "id".
 
 $mysqli = new mysqli( $host, $username, $password, $database);
 
