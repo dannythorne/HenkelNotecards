@@ -48,7 +48,7 @@ else
         $keywords = $keywords." \"".$keywordrow["Keyword"]."\"";
       }
 
-      $getwork = "select * from Work where id=".$row['workId'].";";
+      $getwork = "select * from Work where id=".$row['WorkId'].";";
       $work = $mysqli->query($getwork);
       if( $work)
       {
