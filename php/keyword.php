@@ -193,7 +193,7 @@ function showAddBox(id)
       // Button
       var button = document.createElement("button");
       button.type = "button";
-      button.innerHTML = "Add (not yet functional)";
+      button.innerHTML = "Add";
       button.onclick = submitNotecard;
       form.appendChild(button);
 

@@ -1,11 +1,13 @@
 <?php
 require_once("../global_vars.php");
 
+$mysqli = new mysqli( $host, $username, $password, $database);
+
 $WorkId = $_POST["WorkId"];
 $KeywordId = $_POST["KeywordId"];
-$coords = $_POST["coords"];
-$Passage = $_POST["Passage"];
-$Comment = $_POST["Comment"];
+$coords = $mysqli->real_escape_string($_POST["coords"]);
+$Passage = $mysqli->real_escape_string($_POST["Passage"]);
+$Comment = $mysqli->real_escape_string($_POST["Comment"]);
 
 echo "[";
 echo $WorkId;
@@ -22,8 +24,6 @@ echo "]";
 echo "[";
 echo $Passage;
 echo "]";
-
-$mysqli = new mysqli( $host, $username, $password, $database);
 
 if( mysqli_connect_errno())
 {
