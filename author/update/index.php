@@ -17,18 +17,6 @@
 <h3>Update</h3> 
 <h4>Update an Author's name</h4>
 
-<form action="author_update.php">
-<div>
-Enter Author id: <input type="text" name="id"/>
-</div>
-<div>
-Enter New Name: <input type="text" name="name"/>
-</div>
-<input type="submit" value="submit"/>
-</form>
-
-
-
 <?PHP
 require_once("../../global_vars.php");
 $mysqli = new mysqli($host, $username, $password, $database);
@@ -40,35 +28,29 @@ else
 {
 	$query = "select Name, id from Author;";
 	$result = $mysqli->query($query);
-
 	if( $result )
 	{
 		$num_rows = $result->num_rows;
 		$field_count = $result->field_count;
 		$fields = $result->fetch_fields(); //returns an array
 
-		echo "<table>";
-		echo "<tr>";
-
-		for($i = 0; $i < $field_count; $i++)
-		{
-			echo "<th>";
-			echo $fields[$i]->name;
-			echo "</th>";
-		}
-		echo "</tr>";
-
+		echo '<form action="author_update.php">';
+		echo '<div>';
+		echo 'Select an Author: <select name="name"/>';
 		while( $row = $result->fetch_row() )
 		{
-			echo "<tr>";
-			for( $i=0; $i<$field_count; $i++ )
+			for( $i=0; $i<$field_count; $i+=2 )
 			{
-				echo "<td>";
-				echo "$row[$i]";
-				echo "</td>";
+				echo"<option value='".$row[$i]."'>'".$row[$i]."'</option>";
 			}
 		}
-		echo "</table>";
+		echo '</select>';
+		echo '</div>';
+		echo '<div>';
+		echo 'Enter New Name: <input type="text" name="newName"/>';
+		echo '</div>';
+		echo '<input type="submit" value="submit"/>';
+		echo '</form>';
 	}
 	else
 	{
