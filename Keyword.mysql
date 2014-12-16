@@ -13,5 +13,3 @@ insert into `Keyword` values
 , (4,'test3','Today is Tuesday.')
 , (5,'test again','Yet another test comment...')
 , (7,'sugar','sweet, granular, white, symbolizes acts of affection from a grandparent toward a grandchild, overtones of playful aggression');
-
-

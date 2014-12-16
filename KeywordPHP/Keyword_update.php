@@ -4,18 +4,12 @@
 <title>Title</title>
 </head>
 <body>
-
 <?php
-
 $id = $_GET["id"];
 $keyword = $_GET["Keyword"];
 $comment = $_GET["Comment"];
-
 require_once("global_vars.php");
-
-
 $mysqli = new mysqli( $host, $username, $password, $database);
-
 if( mysqli_connect_errno())
 {
   echo "ERROR: Error connecting to the database.";
@@ -40,10 +34,8 @@ else
 	}
 
 }
-
 $mysqli->close();
-
 ?>
-
 </body>
 </html>
+
