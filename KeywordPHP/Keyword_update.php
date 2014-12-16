@@ -18,7 +18,7 @@ $mysqli = new mysqli( $host, $username, $password, $database);
 
 if( mysqli_connect_errno())
 {
-	echo "ERROR: Error connecting to the database.";
+  echo "ERROR: Error connecting to the database.";
 }
 else
 {
@@ -38,6 +38,7 @@ else
 	{
 		echo "ERROR: Error updating row!";
 	}
+
 }
 
 $mysqli->close();

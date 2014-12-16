@@ -1,6 +1,8 @@
 <?php
 require_once("../global_vars.php");
 
+$id = "id";
+
 $mysqli = new mysqli( $host, $username, $password, $database);
 
 if( mysqli_connect_errno())
@@ -25,10 +27,22 @@ else
     $numrows = $result->num_rows;
     $numcols = $result->field_count;
 
-    while( $row = $result->fetch_row())
+    while( $row = $result->fetch_assoc())
     {
-      echo "<option>";
-      echo $row[0];
+      $getauthor = "select * from Author where id=".$row['AuthorId'];
+      $author = $mysqli->query($getauthor);
+      if( $author)
+      {
+        $authorrow = $author->fetch_assoc();
+        $authorname = $authorrow["Name"];
+      }
+      else
+      {
+        $authorname = "N/A";
+      }
+
+      echo "<option value='".$row[$id]."'>";
+      echo "\"".$row['Name']."\" by ".$authorname;
       echo "</option>";
     }
   }
