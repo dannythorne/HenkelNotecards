@@ -25,8 +25,8 @@ if( mysqli_connect_errno() )
 }
 else
 {
-	$id = $_GET["id"];
-	$newName = $_GET["name"];
+	$currentName = $_GET["name"];
+	$newName = $_GET["newName"];
 	if( $newName === "" )
 	{
 		echo "Can't add empty author name.";
@@ -37,7 +37,7 @@ else
 	else
 	{
 		
-		$query = $query."update Author set name='$newName' where id=$id;";
+		$query = $query."update Author set name='$newName' where name='$currentName';";
 
 		$result = $mysqli->query($query);
 

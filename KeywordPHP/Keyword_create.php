@@ -13,13 +13,12 @@ $comment = $_GET["Comment"];
 
 require_once("global_vars.php");
 
-
-
 echo "<div>";
 echo "Comment: <strong>".$comment."</strong>";
 echo "</div>";
 
 $mysqli = new mysqli( $host, $username, $password, $database);
+
 if( mysqli_connect_errno())
 {
 	echo "ERROR: Error connecting to the database!";
@@ -39,6 +38,7 @@ else
 	echo "<div>";
 	echo $query;
 	echo "</div>";
+
 	$result = $mysqli->query($query);
 	if( $result)
 	{
@@ -54,6 +54,7 @@ else
 
 $mysqli->close();
 ?>
+
 </body>
 </html>
 

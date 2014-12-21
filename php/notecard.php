@@ -53,6 +53,7 @@ else
     $getkeywords = $getkeywords." Notecard.id=".$id;
     $getkeywords = $getkeywords.";";
     $keywords = $mysqli->query($getkeywords);
+
     if($keywords)
     {
       while( $keywordrow = $keywords->fetch_assoc())
@@ -66,14 +67,19 @@ else
     {
     }
 
-    echo "<span>";
+    echo "<span class='citation'>";
     echo $workname;
     echo " ";
     echo $row["coords"];
     echo "</span>";
-    echo "<div>";
+    echo "<div class='passage'>";
+    echo "Passage: &ldquo;";
+    echo $row["Passage"];
+    echo "&rdquo;</div>";
+    echo "<div class='comment'>";
+    echo "Comment: <i>";
     echo $row["Comment"];
-    echo "</div>";
+    echo "</i></div>";
   }
   else
   {
